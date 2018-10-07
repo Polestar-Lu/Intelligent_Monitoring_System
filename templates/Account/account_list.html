@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>用户管理</title>
+</head>
+<body>
+    <table border="1" cellpadding="5" width='90%' align="center">
+<tr>
+    <td width='33%' align="center" valign="center">用户名</td>
+    <td width='12%' align="center" valign="center">是否为超级用户</td>
+    <td width='20%' align="center" valign="center">注册时间</td>
+    <td width='20%' align="center" valign="center">上次登录</td>
+    <td width='15%' align="center" valign="center">操作</td>
+</tr>
+    {% for account in account_list %}
+    <tr>
+        <td width='33%' align="center" valign="center">{{ account.username }}</td>
+        <td width='12%' align="center" valign="center">{{ account.is_superuser }}</td>
+        <td width='20%' align="center" valign="center">{{ account.date_joined }}</td>
+        <td width='20%' align="center" valign="center">{{ account.last_login }}</td>
+        <td width='15%' align="center" valign="center">
+            {% if my_id != account.id %}
+            <form method="post">
+                {% csrf_token %}
+                <input type="hidden" name="delete_user_ID" value={{ account.id }} >
+                <input value='删除此用户' type="submit" >
+            </form>
+            {% endif %}
+        </td>
+    </tr>
+    {% endfor %}
+</table>
+    <br>
+    <div style="text-align: center"><a href = '/account/function_select'><button>返回控制界面</button></a></div>
+</body>
+</html>

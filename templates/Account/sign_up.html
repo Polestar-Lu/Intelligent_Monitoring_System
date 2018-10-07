@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>注册|Sign Up</title>
+    <style type="text/css">ul.errorlist {color:red}</style>
+</head>
+<body>
+
+{% block content %}
+<div class="container">
+  <div class="jumbotron">
+
+  <h2>注册</h2>
+  </div>
+
+  <form method="post">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit">注册</button>
+  </form>
+  <div>已有账号？<a href="/account/login/">点此登录</a></div>
+</div>
+{% endblock %}
+</body>
+</html>

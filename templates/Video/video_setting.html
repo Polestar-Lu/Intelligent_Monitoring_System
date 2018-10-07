@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>监控设置|Video Setting</title>
+</head>
+<body>
+    <div style="text-align: center">
+    <p>欢迎，{{ username }}</p>
+    <form method="post">
+        {% csrf_token %}
+        <span>监控来源设置：</span>
+        <select name="type">
+            <option value="local" {{ selected_1 }}>本地摄像头</option>
+            <option value="web" {{ selected_2 }}>网络摄像头</option>
+        </select>
+        <input value="提交更改" type="submit" >
+    </form>
+    <div style="text-align: center">{{ result_1 }}</div>
+        <br>
+    <form method="post">
+        {% csrf_token %}
+        <span>监控警报设置：连续10次检测中，触发</span>
+        <input type="number" name="rate" min="1" max="11" value={{ occur }}>
+        <span>次或以上检测命中时，视为逗留</span>
+        <input value="提交更改" type="submit" >
+    </form>
+    </div>
+    <div style="text-align: center">{{ result_2 }}</div>
+    <br>
+    <div style="text-align: center"><a href = '/video/index'><button>进入实时监控</button></a><br><br></div>
+    <div style="text-align: center"><a href = '/account/function_select'><button>返回</button></a><br></div>
+</body>
+</html>

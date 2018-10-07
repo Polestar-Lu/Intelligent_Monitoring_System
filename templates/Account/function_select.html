@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>功能选单</title>
+</head>
+<body style="text-align: center">
+    <p>欢迎，{{ username }}</p>
+    <a href = '/video/video_setting'><button>查看监控</button></a><br><br>
+    <a href = "/account/message_list"><button>预警信息管理</button></a><br><br>
+        <form method="post">
+        {% csrf_token %}
+        <input type="hidden" name="action" value="account">
+        <input value="用户信息管理" type="submit" >
+    </form>
+    <div>{{ message }}</div>
+    <br>
+    <a href = '/account/change_password'><button>更改密码</button></a>
+    <br><br>
+    <a href = '/account/logout'><button>注销</button></a>
+</body>
+</html>

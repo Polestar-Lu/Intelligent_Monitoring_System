@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>监控预览|Video Scene</title>
+    <script>
+        var xhr = new XMLHttpRequest();
+        xhr.multipart = true;
+        xhr.open('GET', "/video/message");
+        xhr.onreadystatechange = function(){
+            if (xhr.readyState == 3){
+                document.getElementById("warning_message").innerText = "警报日志：\n" + xhr.responseText
+            }
+        };
+        xhr.send(null);
+    </script>
+</head>
+<body style="text-align: center">
+    <p>欢迎，{{ username }}</p>
+    <div>实时监控画面：</div>
+    <img height="480" width="640" src="/video/video">
+    <br>
+    <div>人像抓取结果：</div>
+    <br>
+    <img height="128" width="128"src="/video/face_1">
+    <img height="128" width="128"src="/video/face_2">
+    <img height="128" width="128"src="/video/face_3">
+    <img height="128" width="128"src="/video/face_4">
+    <img height="128" width="128"src="/video/face_5">
+    <br><br>
+    <textarea rows = "20" id = "warning_message" style="resize: none;width: 640px;" readonly>警报日志：</textarea>
+    <br><br>
+
+<script language="javascript">
+function custom_close(){
+    window.opener=null;
+    window.open('','_self');
+    window.close();
+}
+</script>
+
+    <a href="/video/video_setting" target="_blank" onClick="custom_close()"><button>返回警报设置</button></a>
+    <a href="/account/function_select" target="_blank" onClick="custom_close()"><button>进入管理界面</button></a>
+</body>
+</html>

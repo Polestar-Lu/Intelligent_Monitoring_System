@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>警报消息管理</title>
+</head>
+<body>
+    <table border="1" cellpadding="5" width='90%' align="center">
+<tr>
+    <td width='47%' align="center" valign="center">详情</td>
+    <td width='22.5%' align="center" valign="center">人物图片</td>
+    <td width='18%' align="center" valign="center">发生时间</td>
+    <td width='12.5%' align="center" valign="center">操作</td>
+</tr>
+    {% for msg in msg_list %}
+    <tr>
+        <td width='47%' align="center" valign="center">{{ msg.describe }}</td>
+        <td width='22.5%' align="center" valign="center"><img width="100px" src={{ msg.face.url }} /></td>
+        <td width='18%' align="center" valign="center">{{ msg.create_date_time }}</td>
+        <td width='12.5%' align="center" valign="center">
+            <form method="post">
+                {% csrf_token %}
+                <input type="hidden" name="delete_msg_ID" value={{ msg.id }} >
+                <input value='删除此警报' type="submit" >
+            </form>
+        </td>
+    </tr>
+    {% endfor %}
+</table>
+    <br>
+    <div style="text-align: center"><a href = '/account/function_select'><button>返回控制界面</button></a></div>
+</body>
+</html>

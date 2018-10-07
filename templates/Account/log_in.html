@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>登录|Log In</title>
+    <style type="text/css">ul.errorlist {color:red}</style>
+</head>
+<body>
+{#{% extends 'tilweb/base.html' %}#}
+{% block content %}
+<div class="container">
+  <div class="jumbotron">
+  <h2>登录</h2>
+  </div>
+
+  <form method="post">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit">登录</button>
+  </form>
+  <div>还没有账号？<a href="/account/signup/">点此注册</a></div>
+</div>
+{% endblock %}
+</body>
+</html>
