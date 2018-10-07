@@ -1,0 +1,7 @@
+.idea/
+Account/__pycache__/
+Intelligent_Monitoring_System/__pycache__/
+media/img/
+MessageModel/__pycache__/
+MessageModel/migrations/__pycache__/
+Video/__pycache__/
